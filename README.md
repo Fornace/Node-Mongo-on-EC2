@@ -70,6 +70,7 @@ Then run the node app:
     forever start /var/www/app.js
     
 To stop you have to see the id (it's at the beginning of the line):
+
     forever list
     forever stop 0
     
