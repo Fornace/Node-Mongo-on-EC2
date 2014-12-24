@@ -69,6 +69,10 @@ Then run the node app:
 
     forever start /var/www/app.js
     
+To stop you have to see the id (it's at the beginning of the line):
+    forever list
+    forever stop 0
+    
 Or regular mode (will interrupt when closing cli or rebooting)
 
     node /var/www/app.js
