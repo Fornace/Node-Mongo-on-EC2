@@ -18,7 +18,6 @@ Compile and install node.js
 
 Add user´s directory to BIN Paths (node binaries location)
 
-
     sudo su
     nano /etc/sudoers
 
@@ -40,18 +39,22 @@ Test if node is working:
 > press Ctrl+C two times to close node interpreter
 
 ### Installing nginx ###
+
     yum install nginx
     nano /etc/nginx/nginx.conf
 
 Add the proxy under `location / {`
+
     proxy_pass http://127.0.0.1:3000/;
 
 Test if it's working
+
     service nginx restart
     mkdir /var/www
     nano /var/www/app.js
     
 Paste this code:
+
     var http = require('http');
     http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -59,12 +62,15 @@ Paste this code:
     console.log('Server running at http://127.0.0.1:3000/');
 
 ### Ensuring continuos run ###
+
     npm install forever -g
 
 Then run the node app:
+
     forever /var/www/app.js
     
 Or regular mode (will interrupt when closing cli or rebooting)
+
     node /var/www/app.js
 
 
