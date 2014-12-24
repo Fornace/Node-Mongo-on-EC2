@@ -39,6 +39,35 @@ Test if node is working:
 > this must show a `>` indicator  
 > press Ctrl+C two times to close node interpreter
 
+### Installing nginx ###
+    yum install nginx
+    nano /etc/nginx/nginx.conf
+
+Add the proxy under `location / {`
+    proxy_pass http://127.0.0.1:3000/;
+
+Test if it's working
+    service nginx restart
+    mkdir /var/www
+    nano /var/www/app.js
+    
+Paste this code:
+    var http = require('http');
+    http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World\n'); }).listen(3000, "127.0.0.1");
+    console.log('Server running at http://127.0.0.1:3000/');
+
+### Ensuring continuos run ###
+    npm install forever -g
+
+Then run the node app:
+    forever /var/www/app.js
+    
+Or regular mode (will interrupt when closing cli or rebooting)
+    node /var/www/app.js
+
+
 ## Second step: Install and configure MongoDB database ##
 > Based on [http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-amazon-ec2/](http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-amazon-ec2/ "Installing mongodb on Amazon EC2 tutorial")
 
