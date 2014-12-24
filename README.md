@@ -67,7 +67,7 @@ Paste this code:
 
 Then run the node app:
 
-    forever /var/www/app.js
+    forever start /var/www/app.js
     
 Or regular mode (will interrupt when closing cli or rebooting)
 
